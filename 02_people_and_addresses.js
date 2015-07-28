@@ -35,7 +35,6 @@ module.exports = {
 
             var temp = [];
             for(var i = 0; i < people.length; i++){
-
               for(var j = 0; j < employers.length; j++){
                 for(var k = 0; k < people[i].employerIds.length; k++){
                   if(people[i].employerIds[k].toString() === employers[j]._id.toString()){
@@ -45,8 +44,6 @@ module.exports = {
               }people[i].employers = temp
               temp = []
             }
-
-
             var employerAddresses = []
             for(var i = 0; i < employers.length; i++){
               employerAddresses.push(employers[i].addressId)
@@ -61,7 +58,7 @@ module.exports = {
                   }
                 }
               }
-            }return people
+            } return people
           })
         })
       })
