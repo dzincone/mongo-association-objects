@@ -1,2 +1,13 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{#each people}}
+  <section>
+    <h1>{{name}}</h1>
+    <p class="address">{{address.line1}}, {{address.cityStateZip}}</p>
+    <ul>
+      {{#each employers}}
+        <li>
+          {{name}} ({{address.line1}}, {{address.cityZipZip}})
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+{{/each}}
