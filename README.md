@@ -1,5 +1,7 @@
 # Using associated data in views
 
+Updated!
+
 ## Setup
 
 1. Fork and clone
