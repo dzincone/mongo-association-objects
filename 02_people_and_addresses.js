@@ -13,35 +13,34 @@ return Promise.all(promises).then(function(data){
   employers = data[1];
   addresses = data[2];
   for(var i = 0; i < people.length; i++){
-    for(var j = 0; j < addresses.length; j++){
-      if(people[i].addressId.toString() === addresses[j]._id.toString()){
-        people[i].address = addresses[j]
-      }
-    }
-  }
-  for(var i = 0; i < people.length; i++){
-    var temp = []
-    for(var j = 0; j < people[i].employerIds.length; j++){
-      for(var k = 0; k < employers.length; k++){
-        if(people[i].employerIds[j].toString() === employers[k]._id.toString()){
-          temp.push(employers[k]);
-        }
-      } people[i].employers = temp
-    }
-  }
-  for(var i = 0; i < people.length; i++){
-     if(people[i].employers){
-       for(var j = 0; j < people[i].employers.length; j++){
-         for(var k = 0; k < addresses.length; k++){
-           if(people[i].employers[j].addressId.toString() ===        addresses[k]._id.toString()){
-             people[i].employers[j].address = addresses[k]
-            }
+    if(!people[i].address){
+        for(var j = 0; j < addresses.length; j++){
+          if(people[i].addressId.toString() === addresses[j]._id.toString()){
+            people[i].address = addresses[j]
           }
         }
       }
+    if(!people.employers){
+        var temp = []
+        for(var j = 0; j < people[i].employerIds.length; j++){
+          for(var k = 0; k < employers.length; k++){
+            if(people[i].employerIds[j].toString() === employers[k]._id.toString()){
+              temp.push(employers[k]);
+            }
+          } people[i].employers = temp
+        }
+      }
+    if(people[i].employers){
+      for(var j = 0; j < people[i].employers.length; j++){
+        for(var k = 0; k < addresses.length; k++){
+          if(people[i].employers[j].addressId.toString() ===        addresses[k]._id.toString()){
+            people[i].employers[j].address = addresses[k]
+           }
+         }
+       }
+     }
   }
    return people
-
 })
 }
 }
